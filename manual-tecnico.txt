@@ -1,0 +1,160 @@
+Manual Técnico del Juego Snake
+
+Descripción
+
+Snake es un juego en el que controlas una serpiente que se mueve por un tablero. El objetivo es comer manzanas para crecer. El juego termina si la serpiente choca contra los bordes del tablero o contra sí misma.
+
+Interfaz
+
+- Título: Snake 🐍
+- Puntuación Actual: 🍎: [puntuación]
+- Puntuación Máxima: 🏆: [puntuación máxima]
+- Tablero de Juego**
+- Control de Velocidad: Slider para ajustar velocidad.
+- Botones:
+  - Reiniciar
+  - Modo Oscuro
+  - Instrucciones
+
+Reglas
+
+1. La serpiente se mueve en la dirección indicada por el jugador.
+2. Comer manzanas aumenta la longitud de la serpiente y la puntuación.
+3. El juego finaliza si la serpiente choca con las paredes o consigo misma.
+4. Cada manzana comida incrementa la puntuación en uno.
+
+Controles
+
+- Flecha Izquierda: Mueve la serpiente a la izquierda
+- Flecha Arriba: Mueve la serpiente hacia arriba
+- Flecha Derecha: Mueve la serpiente a la derecha
+- Flecha Abajo: Mueve la serpiente hacia abajo
+
+Instrucciones (Cuadro de Diálogo)
+
+- Controla la serpiente con las flechas del teclado.
+- Come manzanas para crecer.
+- Evita chocar con los bordes o contigo mismo.
+- Ajusta la velocidad y reinicia el juego cuando desees.
+
+Personalización
+
+- Velocidad: Ajustable con un control deslizante.
+- Tema: Alterna entre modo claro y oscuro.
+
+------------------JavaScript del Juego Snake-------------------------
+
+Elementos del DOM
+
+Se seleccionan los siguientes elementos del documento para interactuar con el juego:
+
+- `playBoard`: Área de juego donde se dibuja la serpiente y la comida.
+- `scoreElement`: Muestra la puntuación actual.
+- `highScoreElement`: Muestra la puntuación más alta registrada.
+- `controls`: Controles de dirección (flechas).
+- `speedInput` y `speedValue`: Ajustan y muestran la velocidad del juego.
+- `restartBtn`: Reinicia el juego.
+- `themeToggle`: Alterna entre modo claro y oscuro.
+
+Variables del Juego
+
+- `gameOver`: Estado que indica si el juego ha terminado.
+- `foodX`, `foodY`: Posiciones de la comida en el tablero.
+- `snakeX`, `snakeY`: Posición inicial de la serpiente.
+- `velocityX`, `velocityY`: Dirección de movimiento de la serpiente.
+- `snakeBody`: Arreglo que almacena las posiciones del cuerpo de la serpiente.
+- `setIntervalId`: Id del intervalo del juego.
+- `score`: Puntuación actual del jugador.
+- `gameSpeed`: Velocidad del juego, ajustable por el jugador.
+- `highScore`: Almacena la máxima puntuación utilizando `localStorage`.
+
+Funciones Principales
+
+updateFoodPosition
+Actualiza la posición de la comida en el tablero, asegurándose de que no esté en la misma posición que la serpiente.
+
+handleGameOver
+Finaliza el juego y muestra una alerta al jugador.
+
+### changeDirection
+Cambia la dirección de la serpiente según la tecla presionada. El movimiento es restringido para evitar que la serpiente se mueva en dirección opuesta.
+
+initGame
+Controla la lógica principal del juego:
+- Comprueba si la serpiente ha comido la comida.
+- Actualiza la posición de la serpiente y su cuerpo.
+- Verifica si se ha salido del tablero o si ha chocado consigo misma.
+
+updateSpeed
+Actualiza la velocidad del juego según el valor seleccionado por el usuario. Reinicia el intervalo del juego para aplicar la nueva velocidad.
+
+restartGame
+Reinicia todos los parámetros del juego (posición de la serpiente, puntuación, etc.) y lo vuelve a iniciar.
+
+toggleTheme
+Cambia entre el tema claro y oscuro.
+
+Event Listeners
+
+- Cambio de dirección: Se asigna a los controles y al teclado.
+- Ajuste de velocidad: Detecta cambios en el control deslizante.
+- Reinicio del juego: Se activa al hacer clic en el botón de reinicio.
+- Cambio de tema: Alterna entre modo claro y oscuro.
+
+Inicialización
+
+- La posición de la comida se establece inicialmente.
+- El juego se inicia con un intervalo que actualiza la lógica del juego según la velocidad configurada.
+
+------------------CSS del Juego Snake-------------------------
+
+Estilo General
+
+- Fuentes: Se utiliza la fuente "Open Sans" de Google Fonts.
+- Estilos Globales: 
+  - Se aplica padding, margin y box-sizing a todos los elementos para un diseño coherente.
+  - `display: flex` en el `body` para centrar el contenido vertical y horizontalmente, con un fondo suave usando gradientes y una imagen de fondo.
+
+Modo Oscuro
+
+- Clase `.dark-mode`: Aplica un fondo oscuro y un efecto de desenfoque, alternando entre imágenes de fondo según el modo.
+
+ Estructura del Juego
+
+ `.wrapper`
+- Contenedor principal del juego con dimensiones flexibles, padding y un fondo oscuro.
+- Sombra y transformación en el hover para un efecto visual atractivo.
+
+Títulos y Detalles
+- `.game-title`: Título del juego con un tamaño de fuente grande y color blanco.
+- `.game-details`: Muestra la puntuación y detalles del juego con un fondo semitransparente.
+
+Tablero de Juego
+- `.play-board`: Estructura de cuadrícula para el tablero del juego, definiendo 30 filas y columnas. 
+- Estilos para los elementos que representan la comida (`.food`) y la cabeza de la serpiente (`.head`) que incluyen un efecto de zoom en hover.
+
+Controles y Botones
+
+`.speed-control`
+- Control deslizante para ajustar la velocidad, con estilos para el input y el texto.
+
+`.game-buttons`
+- Botones con estilos de fondo, texto y efectos de hover.
+- Cambios de color y sombra en el hover para el botón de reinicio y el botón de cambio de tema.
+
+`.controls`
+- Oculto y mostrado en pantallas pequeñas, con estilos para los iconos de control y efectos de hover.
+
+Animaciones y Efectos
+
+- Botones Animados: Efectos visuales al hacer hover y clic, con un efecto de expansión y sombra.
+- Animaciones de diálogo: Efectos de aparición (`fadeIn`) para diálogos con fondo desenfocado y sombras.
+
+Responsividad
+
+- Media Queries: Adaptaciones para pantallas más pequeñas ajustando el tamaño de elementos y mostrando los controles de manera apropiada.
+
+Estilos Específicos
+
+- Estilo para el botón de cerrar (`.x`) en diálogos, con efectos visuales que cambian en hover.
+- Estilos para encabezados (`h2`) y párrafos (`p`) para un texto limpio y legible.

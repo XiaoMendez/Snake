@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake 🐍 - Xiao Mendez</title>
+    <link rel="stylesheet" href="css/snake.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="game-title">Snake</h1>
+
+        <div class="game-details">
+            <span class="score">🍎: 0</span>
+            <span class="high-score">🏆: 0</span>
+        </div>
+
+        <div class="play-board"></div>
+
+        <div class="speed-control">
+            <label for="speed">Velocidad: +</label>
+            <input type="range" id="speed" min="20" max="100" step="10" value="200">
+            <label for="speed">-</label>
+            <span id="speed-value">200</span>
+        </div>
+
+        <div class="game-buttons">
+            <button id="restart">🔄 Reiniciar</button>
+            <button id="toggle-theme">🌙 Modo Oscuro</button>
+            <button class="animated-button" id="instructions-button"><span>Instrucciones</span><span></span></button>
+
+            <dialog id="dialog">
+                <h2>Instrucciones.</h2>
+                <p>En Snake, controlarás el movimiento de la serpiente con las flechas del teclado.</p>
+                <p>Debes comer todas las manzanas posibles para crecer, las cuales aparecerán aleatoriamente en el mapa.</p>
+                <p>Si la serpiente choca con los bordes o consigo misma, se acabará el juego.</p>
+                <p>En la interfaz, encontrarás una barra para ajustar la velocidad de la serpiente, un botón de reinicio y un botón para activar el modo oscuro.</p>
+                <h3>Buena suerte!</h3>
+                <button onclick="closeDialog()" aria-label="close" class="x">❌</button>
+            </dialog>
+        </div>
+
+        <div class="controls">
+            <i data-key="ArrowLeft" class="fa-solid fa-arrow-left-long"></i>
+            <i data-key="ArrowUp" class="fa-solid fa-arrow-up-long"></i>
+            <i data-key="ArrowRight" class="fa-solid fa-arrow-right-long"></i>
+            <i data-key="ArrowDown" class="fa-solid fa-arrow-down-long"></i>
+        </div>
+    </div>
+
+    <script src="js/snake.js"></script>
+    <script>
+        //Codigo para el modal de las instrucciones de: FreeFrontend en https://freefrontend.com/css-modal-windows/
+        const instructionsButton = document.getElementById('instructions-button');
+        const dialog = document.getElementById('dialog');
+
+        instructionsButton.addEventListener("click", () => {
+            dialog.showModal();
+        });
+
+        function closeDialog() {
+            dialog.close();
+        }
+    </script>
+</body>
+</html>
