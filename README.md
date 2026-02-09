@@ -45,7 +45,7 @@ ESTRUCTURA DEL JUEGO
 - snake.js:
   - Archivo JavaScript que contiene la lógica del juego. Implementa las funciones para mover la serpiente, actualizar la posición de la comida, manejar la puntuación y gestionar el estado del juego.
 
-Funciones principales en script.js:
+Funciones principales en snake.js:
 
 1. updateFoodPosition():
    - Actualiza la posición de la comida en el tablero.
